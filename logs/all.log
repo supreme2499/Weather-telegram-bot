@@ -1,0 +1,5 @@
+time="2024-07-14T22:35:12+03:00" level=info msg="получение бота" func="main.main()" file="main.go:14"
+time="2024-07-14T22:37:03+03:00" level=info msg="получение бота" func="main.main()" file="main.go:15"
+time="2024-07-14T22:38:20+03:00" level=info msg="получение бота" func="main.main()" file="main.go:15"
+time="2024-07-15T18:32:53+03:00" level=info msg="преобразование города в координаты" func="main.main()" file="main.go:18"
+time="2024-07-15T18:32:54+03:00" level=info msg="получение температуры" func="main.main()" file="main.go:23"
