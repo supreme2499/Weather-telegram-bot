@@ -5,8 +5,6 @@ import (
 	"telegram-bot/internal"
 )
 
-//const mytoken = "7319163777:AAHEm4eC21EwOr5Zjuq72m844rgkGrYrZBM"
-
 func main() {
 	//logger := logging.GetLogger()
 	//подключение к клиенту телеграм
