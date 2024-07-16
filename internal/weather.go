@@ -9,20 +9,19 @@ import (
 	"telegram-bot/pkg/config"
 )
 
-//service: https://openweathermap.org/api
-
-// пример запроса https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid={API key}ы
-// lat - широта; lon - долгота
-
 type Temperature struct {
+	Weather []struct {
+		Desc string `json:"description"`
+	} `json:"weather"`
 	Main struct {
 		Temp float32 `json:"temp"`
 	} `json:"main"`
 }
 
-func Weather(lat, lon string) string {
+// lat - долгота lon - широта
+func Weather(lat, lon string) (string, string) {
 	cfg := config.GetConfig()
-	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s&units=metric", lat, lon, cfg.WeatKey)
+	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s&units=metric&lang=ru", lat, lon, cfg.WeatKey)
 	resp, err := http.Get(url)
 	if err != nil {
 		log.Fatal("ошибка выполннения запроса:", err)
@@ -41,8 +40,7 @@ func Weather(lat, lon string) string {
 	if err != nil {
 		log.Fatal("ошибка парсинга: ", err)
 	}
-
+	desc := temperature.Weather[0].Desc
 	temp := temperature.Main.Temp
-
-	return fmt.Sprintf("%.2f℃", temp)
+	return fmt.Sprintf("%.2f℃", temp), desc
 }
